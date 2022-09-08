@@ -1,0 +1,10 @@
+az container create \
+  --resource-group rails \
+  --name hello-rails \
+  --dns-name-label hello-rails \
+  --assign-identity \
+  --scope /subscriptions/ccc95a4d-1e29-45ba-9665-8adfb5e05905/resourcegroups/rails/providers/Microsoft.AppConfiguration/configurationStores/rails-config \
+  --role "App Configuration Data Reader" \
+  --image ryantk/hello-rails:latest \
+  --ports 80 \
+  --environment-variables APP_CONFIG_ENDPOINT=https://rails-config.azconfig.io
