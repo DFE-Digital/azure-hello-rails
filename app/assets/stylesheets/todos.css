@@ -1,0 +1,33 @@
+#todos {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.todo-row {
+  font-size: 20px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.todo-row .action {
+  text-decoration: none;
+  color: unset;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+.todo-row .done {
+  margin-right: 10px;
+}
+
+.todo-row.completed {
+  /* text-decoration: line-through; */
+  color: rgb(131, 131, 131);
+}

@@ -1,7 +1,15 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Body:</strong>
-    <%= todo.body %>
-  </p>
+<%= turbo_frame_tag todo do %>
 
+<div class="todo-row <%= todo.done? ? "completed" : "" %>">
+  <div class="done">
+    <%= button_to todo_path(todo), class: "action", method: :patch, params: { todo: { done: !todo.done } } do %>
+      <% if todo.done? %>☑<% else %>☐<% end %>
+    <% end %>
+  </div>
+
+  <div class="body">
+    <%= todo.body %>
+  </div>
 </div>
+
+<% end %>

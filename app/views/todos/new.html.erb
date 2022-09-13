@@ -1,9 +1,11 @@
 <h1>New todo</h1>
 
-<%= render "form", todo: @todo %>
+<%= turbo_frame_tag "todo_form" do %>
+  <%= render "form", todo: @todo %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to todos", todos_path %>
-</div>
+  <div>
+    <%= link_to "Back to todos", todos_path %>
+  </div>
+<% end %>

@@ -2,13 +2,15 @@
 
 <h1>Todos</h1>
 
-<div id="todos">
+<%= turbo_stream_from "todos" %>
+<%= turbo_frame_tag "todos" do %>
   <% @todos.each do |todo| %>
     <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
   <% end %>
-</div>
+<% end %>
 
-<%= link_to "New todo", new_todo_path %>
+<%= turbo_frame_tag "todo_form" do %>
+  <%= link_to "New todo", new_todo_path %>
+<% end %>
+
+<p>Page loaded at <%= DateTime.now.strftime("%m/%d/%Y, %H:%M:%S") %></p>
