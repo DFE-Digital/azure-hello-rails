@@ -41,6 +41,11 @@ class TodosController < ApplicationController
       if @todo.update(todo_params)
         format.html { redirect_to todos_url }
         format.json { render :show, status: :ok, location: @todo }
+
+        # format.turbo_stream do
+        #   @todos = Todo.order("done ASC, created_at DESC")
+        #   render turbo_stream: turbo_stream.replace("todos", partial: "todos/index", locals: { todo: @todo })
+        # end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
