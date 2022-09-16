@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# See documentation https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl
-
 # Call:
 # ./get-access-token.sh RESOURCE
 # => eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJaUXBKM... (shortened)
@@ -13,6 +11,6 @@
 
 encodedResource=$(echo $1 | jq -Rr @uri)
 
-rawResponse=$(curl -s "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=$encodedResource" -H Metadata:true)
+rawResponse=$(curl -s "$IDENTITY_ENDPOINT?api-version=2019-08-01&resource=$encodedResource" -H Metadata:true -H "X-Identity-Header:$IDENTITY_HEADER")
 
 echo $rawResponse | jq -r .access_token
