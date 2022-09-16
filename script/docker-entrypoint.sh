@@ -9,4 +9,6 @@ bundle exec rake db:prepare
 
 printf "\nDOCKER ENTRYPOINT: Running database migrations COMPLETE\n\n"
 
+/usr/sbin/sshd
+
 exec "$@"
